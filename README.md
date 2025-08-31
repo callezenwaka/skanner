@@ -4,12 +4,12 @@ A powerful Go-based tool for scanning and detecting quotation mark inconsistenci
 
 ## Features
 
-- 🔍 **Smart Quote Detection**: Identifies curly quotes (`"`, `"`, `'`, `'`) and suggests straight quotes
-- 🌍 **International Character Support**: Recognizes legitimate uses of special characters in international text
-- 📁 **Multi-file Support**: Scans entire directories with configurable include/exclude patterns
-- ⚡ **Pre-commit Ready**: Designed to work seamlessly with git pre-commit hooks
-- 🎯 **Configurable**: Customize scanning rules and file patterns
-- 📊 **Detailed Reporting**: Provides line-by-line analysis with context
+- **Smart Quote Detection**: Identifies curly quotes (`"`, `"`, `'`, `'`) and suggests straight quotes
+- **International Character Support**: Recognizes legitimate uses of special characters in international text
+- **Multi-file Support**: Scans entire directories with configurable include/exclude patterns
+- **Pre-commit Ready**: Designed to work seamlessly with git pre-commit hooks
+- **Configurable**: Customize scanning rules and file patterns
+- **Detailed Reporting**: Provides line-by-line analysis with context
 
 ## Installation
 
@@ -73,17 +73,17 @@ Create a `.git/hooks/pre-commit` file:
 #!/bin/sh
 # Pre-commit hook for transquotation scanning
 
-echo "🔍 Scanning for quotation mark issues..."
+echo "Scanning for quotation mark issues..."
 
 # Run the scanner
 ./skanner --exit-on-error
 
 if [ $? -ne 0 ]; then
-    echo "❌ Quotation mark issues found. Please fix them before committing."
+    echo "✗ Quotation mark issues found. Please fix them before committing."
     exit 1
 fi
 
-echo "✅ No quotation mark issues found."
+echo "✓ No quotation mark issues found."
 exit 0
 ```
 
@@ -102,7 +102,7 @@ repos:
   - repo: local
     hooks:
       - id: skanner
-        name: Transquotation Scanner
+        name: Skanner
         entry: skanner
         language: system
         types: [text]
@@ -113,7 +113,7 @@ repos:
 
 ### Configuration File
 
-Create a `transquotation.yaml` file:
+Create a `skanner.yaml` file:
 
 ```yaml
 include_patterns:
