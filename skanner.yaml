@@ -1,0 +1,86 @@
+# Transquotation Scanner Configuration
+# This file configures the behavior of the transquotation scanner
+
+# File patterns to include in scanning
+include_patterns:
+  - "**/*.go"
+  - "**/*.js"
+  - "**/*.ts"
+  - "**/*.jsx"
+  - "**/*.tsx"
+  - "**/*.py"
+  - "**/*.java"
+  - "**/*.cpp"
+  - "**/*.c"
+  - "**/*.h"
+  - "**/*.md"
+  - "**/*.txt"
+
+# File patterns to exclude from scanning
+exclude_patterns:
+  - "**/vendor/**"
+  - "**/node_modules/**"
+  - "**/.git/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/*.min.js"
+  - "**/*.min.css"
+
+# Maximum line length before warning
+max_line_length: 120
+
+# Enable verbose output
+verbose: false
+
+# Automatically fix issues where possible
+fix: false
+
+# Exit with non-zero code on errors
+exit_on_error: true
+
+# Custom quotation mark patterns
+quotation_marks:
+  - type: "smart_quotes"
+    description: "Smart quotes (curly quotes)"
+    pattern: "[\u201C\u201D]"
+    replacement: "\""
+  
+  - type: "smart_single_quotes"
+    description: "Smart single quotes (curly apostrophes)"
+    pattern: "[\u2018\u2019]"
+    replacement: "'"
+  
+  - type: "backticks_in_strings"
+    description: "Backticks in string literals (potential template literal)"
+    pattern: "\"[^\"]*`[^\"]*\""
+    replacement: ""
+  
+  - type: "mixed_quotes"
+    description: "Mixed quote types in same string"
+    pattern: "\"[^\"]*'[^\"]*\"|'[^']*\"[^']*'"
+    replacement: ""
+  
+  - type: "unmatched_quotes"
+    description: "Unmatched quotes"
+    pattern: "^[^\"]*\"[^\"]*$|^[^']*'[^']*$"
+    replacement: ""
+
+# Language-specific rules
+language_rules:
+  go:
+    allow_smart_quotes_in_comments: true
+    allow_smart_quotes_in_strings: false
+  
+  javascript:
+    allow_smart_quotes_in_comments: true
+    allow_smart_quotes_in_strings: false
+    allow_template_literals: true
+  
+  python:
+    allow_smart_quotes_in_comments: true
+    allow_smart_quotes_in_strings: false
+    allow_docstrings: true
+  
+  markdown:
+    allow_smart_quotes: true
+    allow_smart_apostrophes: true
